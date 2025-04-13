@@ -13,6 +13,8 @@ const int pinTempSensor = A0;     // Grove - Temperature Sensor connect to A0
 #define debug  Serial
 #endif
 
+int interval = 1;
+
 // Collect temperature data dynamically
 float* collect_temperature_data(int interval, int duration, int* outSampleCount) {
     int totalSamples = duration / interval;
@@ -74,7 +76,7 @@ void send_data_to_pc(float* timeData, float* freqMag, int sampleCount, float int
 
 
      for (int k = 0; k < sampleCount / 2; k++) {
-        float freq = (k * sampFrequency) / sampleCount;
+        float freq = (k * sampFreq) / sampleCount;
 
         Serial.print("0");                     // Time (not applicable for frequency domain)
         Serial.print(", ");
@@ -86,12 +88,38 @@ void send_data_to_pc(float* timeData, float* freqMag, int sampleCount, float int
     }
 }
 
+int decide_power_mode(float* freqMagnitude, int sampleCount, float sampFreq){
+    float sum =0.0;
+    float magSum = 0.0;
+    int number = sampleCount/2;
+
+    for(int x =0;x<number;x++){
+        float freq = (x* sampFreq) /sampleCount;
+        float mag = freqMagnitude[x];
+
+        sum += freq * mag;
+        magSum += mag;
+    }
+
+    float averageFreq = (magSum != 0) ? (sum / magSum) : 0.0;
+
+    if(averageFreq > 0.5){
+        return 1;
+    }
+    else if(averageFreq <= 0.5 && averageFreq >= 0.1){
+        return 5;
+    }
+    else{
+        return 30;
+    }
+}
+
 void setup() {
     Serial.begin(9600);
 }
 
 void loop() {
-    int interval = 1;            
+                
     int duration = 3 * 60;       
     int sampleCount = 0;
 
@@ -102,6 +130,8 @@ void loop() {
 
     free(tempData);
     free(freqMagnitudes);
+
+    interval = decide_power_mode(freqMagnitudes, sampleCount, 1.0/interval);
 
     while (true);
 }
