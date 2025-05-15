@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-filename = "C:\\Users\\Ollie\\Downloads\\threeminstemperature_F429486.csv"
+filename = "threeminstemperature_F429486.csv"
 data = np.genfromtxt(filename, delimiter=',')
 
 time = data[:, 0]
