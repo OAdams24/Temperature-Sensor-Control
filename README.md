@@ -35,6 +35,7 @@ mode. For memory limitations, it clears the arrays at the end of the loop. In si
 look like the brief:
 
 Collecting temperature data for 1 minute...
+
 Predicted Variation: 0.00, Dominant Frequency: 0.07 Hz, New Sampling Rate: 0.50 Hz, Power Mode: IDLE
 
 I have 6 files in my reporsitory that I have added and updated since starting this project, I have the notebook page 24WSA024_JNB_Coursework_Arduino_Programming.ipynb that has all of the instructions and answers for the different tasks in it. I also have a picture of my arduino
