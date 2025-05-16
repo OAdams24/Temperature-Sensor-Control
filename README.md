@@ -38,6 +38,6 @@ Collecting temperature data for 1 minute...
 
 Predicted Variation: 0.00, Dominant Frequency: 0.07 Hz, New Sampling Rate: 0.50 Hz, Power Mode: IDLE
 
-I have 6 files in my reporsitory that I have added and updated since starting this project, I have the notebook page 24WSA024_JNB_Coursework_Arduino_Programming.ipynb that has all of the instructions and answers for the different tasks in it. I also have a picture of my arduino
+I have 6 files in my repository that I have added and updated since starting this project, I have the notebook page 24WSA024_JNB_Coursework_Arduino_Programming.ipynb that has all of the instructions and answers for the different tasks in it. I also have a picture of my arduino
 setup titled ArduinoTemp.jpg for proof of arduino connections. TemperatureData.ino is the arduino code after completing task 4 on the jupyter notebook. The Csv file threeminstemperature_F429486 has the temperature data over 3 minues automatically captured by Excel.
 graph.py is the python code that plots graphs with the data in the Csv file.
